@@ -23,3 +23,6 @@ img{
 .input-df input[type="radio"]{
 	margin-right: 10px;
 }
+.img-table-menu{
+	max-width: 120px;
+}

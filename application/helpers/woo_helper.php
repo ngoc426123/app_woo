@@ -30,11 +30,13 @@ if(!function_exists("get_code_menu")){
 		$CI->db->select("code");
 		$CI->db->from("menu");
 		$CI->db->order_by("id","desc");
-		$qr=$CI->db->get();
+		$qr = $CI->db->get();
 		if($qr->num_rows()>0){
-			foreach ($qr->row_array() as $value) {
-				echo $value;
-			}
+			$value = $qr->row_array();
+			$num = (int) substr($value["code"], 2);
+			$num++;
+			$num = str_pad($num, 5,0,STR_PAD_LEFT);
+			echo "MT".$num;
 		}
 		else{
 			echo "MT00001";
@@ -48,32 +50,9 @@ if(!function_exists("pr")){
 		echo "</pre>";
 	}
 }
-if(!function_exists("vnstr")){
-    function vnstr($str){
-		$str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", "a", $str);
-        $str = preg_replace("/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/", "e", $str);
-        $str = preg_replace("/(ì|í|ị|ỉ|ĩ)/", "i", $str);
-        $str = preg_replace("/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/", "o", $str);
-        $str = preg_replace("/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/", "u", $str);
-        $str = preg_replace("/(ỳ|ý|ỵ|ỷ|ỹ)/", "y", $str);
-        $str = preg_replace("/(đ)/", "d", $str);
-        $str = preg_replace("/(À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ)/", "a", $str);
-        $str = preg_replace("/(È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ)/", "e", $str);
-        $str = preg_replace("/(Ì|Í|Ị|Ỉ|Ĩ)/", "i", $str);
-        $str = preg_replace("/(Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ)/", "o", $str);
-        $str = preg_replace("/(Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ)/", "u", $str);
-        $str = preg_replace("/(Ỳ|Ý|Ỵ|Ỷ|Ỹ)/", "y", $str);
-        $str = preg_replace("/(Đ)/", "d", $str);
-        $str = preg_replace("/( |_|,)/", "-", $str);
-        $str = preg_replace("/(')/", "", $str);
-		return $str;
-	}
-}
-if(!function_exists("cmoney")){
-	function cmoney($number){
-		$CI = get_instance();
-		$cc = $CI->model_option->get_by_item("perfix_money");
-		return number_format($number,0,'','.').' '.$cc;
+if(!function_exists("get_date_now")){
+	function get_date_now(){
+        return date('d').'/'.date('m').'/'.date('Y');
 	}
 }
 ?>
