@@ -3,4 +3,4 @@ RewriteEngine on
 RewriteCond $1 !^(index\.php|resources|robots\.txt)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /app_woo_la/index.php?/$1 [L,QSA]
+RewriteRule ^(.*)$ /app_woo/index.php?/$1 [L,QSA]

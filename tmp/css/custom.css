@@ -1,0 +1,25 @@
+img{
+	max-width: 100%;
+}
+.img_menu{
+	margin-bottom: 20px;
+	max-width: 200px;
+	margin: 0 auto;
+}
+.img_menu img{
+	margin-bottom: 15px;
+}
+.input-df{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+}
+.input-df .form-control{
+	width: 100%;
+}
+.input-df input[type="checkbox"],
+.input-df input[type="radio"]{
+	margin-right: 10px;
+}
