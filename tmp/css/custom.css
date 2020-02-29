@@ -26,3 +26,12 @@ img{
 .img-table-menu{
 	max-width: 120px;
 }
+.textarea-method{
+	height: 182px !important;
+}
+.img-pos{
+	max-width: 80px;
+}
+.whs{
+	white-space: nowrap;
+}

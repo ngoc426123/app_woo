@@ -43,6 +43,25 @@ if(!function_exists("get_code_menu")){
 		}
 	}
 }
+if(!function_exists("get_code_promotion")){
+	function get_code_promotion(){
+		$CI = get_instance();
+		$CI->db->select("code");
+		$CI->db->from("promotion_bill");
+		$CI->db->order_by("id","desc");
+		$qr = $CI->db->get();
+		if($qr->num_rows()>0){
+			$value = $qr->row_array();
+			$num = (int) substr($value["code"], 2);
+			$num++;
+			$num = str_pad($num, 5,0,STR_PAD_LEFT);
+			echo "PR".$num;
+		}
+		else{
+			echo "PR00001";
+		}
+	}
+}
 if(!function_exists("pr")){
 	function pr($array){
 		echo "<pre>";
@@ -53,6 +72,13 @@ if(!function_exists("pr")){
 if(!function_exists("get_date_now")){
 	function get_date_now(){
         return date('d').'/'.date('m').'/'.date('Y');
+	}
+}
+if(!function_exists("cmoney")){
+	function cmoney($number){
+		$CI = get_instance();
+		$cc = $CI->model_option->get_by_item("perfix_money");
+		return number_format($number,0,'','.').' '.$cc;
 	}
 }
 ?>

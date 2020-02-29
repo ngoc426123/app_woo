@@ -35,9 +35,10 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">Menu chức năng</li>
                     <li><a href="<?php echo base_url("dashbroad") ?>"><i class="fa fa-dashboard"></i><span>Bảng tổng quan</span></a></li>
+                    <li><a href="<?php echo base_url("pos") ?>"><i class="fa fa-shopping-cart"></i><span>Quản lý POS</span></a></li>
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-coffee"></i> <span>Quản lý món</span>
+                            <i class="fa fa-coffee"></i><span>Quản lý món</span>
                             <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                         </a>
                         <ul class="treeview-menu">
@@ -45,9 +46,27 @@
                             <li><a href="<?php echo base_url("menu/add") ?>"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
                         </ul>
                     </li>
-                    <li><a href="<?php echo base_url("promotion") ?>"><i class="fa fa-drivers-license-o"></i><span>Quản lý giảm giá</span></a></li>
-                    <li><a href="<?php echo base_url("method") ?>"><i class="fa fa-truck"></i><span>Quản lý phương thức</span></a></li>
-                    <li><a href="<?php echo base_url("bill") ?>"><i class="fa fa-shopping-cart"></i><span>Quản lý hóa đơn</span></a></li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-drivers-license-o"></i><span>Quản lý giảm giá</span>
+                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="<?php echo base_url("promotion") ?>"><i class="fa fa-circle-o"></i> Danh sách giảm giá</a></li>
+                            <li><a href="<?php echo base_url("promotion/add") ?>"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-truck"></i><span>Quản lý phương thức</span>
+                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="<?php echo base_url("method") ?>"><i class="fa fa-circle-o"></i> Danh sách phương thức</a></li>
+                            <li><a href="<?php echo base_url("method/add") ?>"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="<?php echo base_url("bill") ?>"><i class="fa fa-file-text"></i><span>Quản lý hóa đơn</span></a></li>
                     <li><a href="<?php echo base_url("reset") ?>"><i class="fa fa-repeat"></i><span>Reset</span></a></li>
                 </ul>
             </section>
