@@ -1,5 +1,9 @@
+.areaPrint{
+	display: none;
+}
 @media print {
-	.areaTable{
+	.areaTable,
+	.areaAdmin{
 		display: none;
 	}
 	.areaPrint{

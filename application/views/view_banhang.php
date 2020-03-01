@@ -6,8 +6,8 @@
 	<meta class="dataBill" data-bill="" data-ct="">
   	<link href="<?php echo base_url("AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css"); ?>" rel="stylesheet">
   	<link href="<?php echo base_url("AdminLTE/bower_components/font-awesome/css/font-awesome.min.css"); ?>" rel="stylesheet">
-  	<link href="<?php echo base_url("AdminLTE/bower_components/alertifyjs/css/alertify.css"); ?>" rel="stylesheet">
-  	<link href="<?php echo base_url("AdminLTE/bower_components/alertifyjs/css/themes/default.css"); ?>" rel="stylesheet">
+  	<link href="<?php echo base_url("AdminLTE/plugins/alertifyjs/css/alertify.css"); ?>" rel="stylesheet">
+  	<link href="<?php echo base_url("AdminLTE/plugins/alertifyjs/css/themes/default.css"); ?>" rel="stylesheet">
   	<link href="<?php echo base_url("tmp/css/style.css"); ?>" rel="stylesheet">
   	<link href="<?php echo base_url("tmp/css/style_print.css"); ?>" rel="stylesheet">
 </head>
@@ -28,21 +28,39 @@
 					<tbody class="listMenu">
 						
 					</tbody>
+				</table>
+				<table>
 					<tfoot>
+					<?php
+					foreach ($promotion as $value) {
+					?>
 						<tr>
 							<td colspan="2">
-								<div class="myCheckbox check-giamgia" data-giamgia="20"><label for="pr1"><input id="pr1" type="checkbox"><span>Có giảm giá</span></label></div>
+								<div class="myCheckbox check-giamgia" data-giamgia="<?php echo $value["promotion"] ?>" data-type="<?php echo $value["type"] ?>"><label for="pr<?php echo $value["id"] ?>"><input id="pr<?php echo $value["id"] ?>" type="checkbox" name="promotion"><span><?php echo $value["content"] ?></span></label></div>
 							</td>
-							<td colspan="2">-20%</td>
+							<td colspan="2"><?php echo ($value["type"] == "per")?"- ".$value["promotion"]."%":"- ".number_format($value["promotion"],0,'','.')." vnđ" ?></td>
 							<td></td>
 						</tr>
+					<?php
+					}
+					?>
+					</tfoot>
+				</table>
+				<table>
+					<tfoot>
+					<?php
+					foreach ($method as $value) {
+					?>
 						<tr>
 							<td colspan="2">
-								<div class="myCheckbox check-vanchuyen" data-vanchuyen="15000"><label for="pr2"><input id="pr2" type="checkbox"><span>Vận chuyển có tính phí</span></label></div>
+								<div class="myCheckbox check-vanchuyen" data-vanchuyen="<?php echo $value["cost"] ?>"><label for="mt<?php echo $value["id"] ?>"><input id="mt<?php echo $value["id"] ?>" type="checkbox" name="method"><span><?php echo $value["content"] ?></span></label></div>
 							</td>
-							<td colspan="2">+15.000</td>
+							<td colspan="2">+ <?php echo number_format($value["cost"],0,'','.') ?> vnđ</td>
 							<td></td>
 						</tr>
+					<?php
+					}
+					?>
 					</tfoot>
 				</table>
 			</div>
@@ -77,96 +95,21 @@
 			</div>
 			<div class="menuLive designScroll">
 				<div class="grid">
+				<?php 
+				foreach ($menu as $value) {
+				?>
 					<div class="col">
-						<div class="item" id="m1210" pos="Cafe sữa đá" price="15000">
-							<div class="img"><img src="<?php echo base_url("upload/item1.jpg"); ?>" alt=""></div>
+						<div class="item" id="<?php echo $value["id"] ?>" pos="<?php echo $value["name"] ?>" price="<?php echo $value["cost"] ?>">
+							<div class="img"><img src="<?php echo base_url($value["image"]); ?>" alt=""></div>
 							<div class="caption">
-								<div class="tend">Cafe sữa đá</div>
-								<div class="price">15.000</div>
+								<div class="tend"><?php echo $value["name"] ?></div>
+								<div class="price"><?php echo $value["cost"] ?></div>
 							</div>
 						</div>
 					</div>
-					<div class="col">
-						<div class="item" id="m1211" pos="Cafe đá" price="10000">
-							<div class="img"><img src="<?php echo base_url("upload/item2.jpg"); ?>" alt=""></div>
-							<div class="caption">
-								<div class="tend">Cafe đá</div>
-								<div class="price">10.000</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="item" id="m1212" pos="Nước cam vắt" price="15000">
-							<div class="img"><img src="<?php echo base_url("upload/item3.jpg"); ?>" alt=""></div>
-							<div class="caption">
-								<div class="tend">Nước cam vắt</div>
-								<div class="price">15.000</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="item" id="m1213" pos="Soda chanh" price="10000">
-							<div class="img"><img src="<?php echo base_url("upload/item4.jpg"); ?>" alt=""></div>
-							<div class="caption">
-								<div class="tend">Soda chanh</div>
-								<div class="price">10.000</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="item" id="m1214" pos="Soda Bạc hà" price="25000">
-							<div class="img"><img src="<?php echo base_url("upload/item5.jpg"); ?>" alt=""></div>
-							<div class="caption">
-								<div class="tend">Soda Bạc hà</div>
-								<div class="price">25.000</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="item" id="m1215" pos="Capuchino" price="45000">
-							<div class="img"><img src="<?php echo base_url("upload/item6.jpg"); ?>" alt=""></div>
-							<div class="caption">
-								<div class="tend">Capuchino</div>
-								<div class="price">45.000</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="item" id="m1216" pos="Chanh leo" price="45000">
-							<div class="img"><img src="<?php echo base_url("upload/item7.jpg"); ?>" alt=""></div>
-							<div class="caption">
-								<div class="tend">Chanh leo</div>
-								<div class="price">45.000</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="item" id="m1217" pos="Nước dừa ca" price="12000">
-							<div class="img"><img src="<?php echo base_url("upload/item8.jpg"); ?>" alt=""></div>
-							<div class="caption">
-								<div class="tend">Nước dừa ca</div>
-								<div class="price">12.000</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="item" id="m1218" pos="Sinh tố bơ" price="18000">
-							<div class="img"><img src="<?php echo base_url("upload/item9.jpg"); ?>" alt=""></div>
-							<div class="caption">
-								<div class="tend">Sinh tố bơ</div>
-								<div class="price">18.000</div>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="item" id="m1219" pos="Sinh tố xoài" price="18000">
-							<div class="img"><img src="<?php echo base_url("upload/item10.jpg"); ?>" alt=""></div>
-							<div class="caption">
-								<div class="tend">Sinh tố xoài</div>
-								<div class="price">18.000</div>
-							</div>
-						</div>
-					</div>
+				<?php
+				}
+				?>
 				</div>
 			</div>
 		</div>
@@ -175,7 +118,7 @@
 </body>
 <!-- jQuery 3 -->
 <script src="<?php echo base_url("tmp/js/jquery.js"); ?>"></script>
-<script src="<?php echo base_url("AdminLTE/bower_components/alertifyjs/alertify.js"); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url("AdminLTE/plugins/alertifyjs/alertify.js"); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url("tmp/js/style.js"); ?>" type="text/javascript"></script>
 <script type="text/javascript">
 	var base_url = "<?php echo base_url(); ?>";

@@ -35,3 +35,18 @@ img{
 .whs{
 	white-space: nowrap;
 }
+.table-bill .item{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	font-size: 13px;
+	line-height: 20px;
+	margin-bottom: 5px;
+}
+.table-bill tr th:nth-child(2) ~ th,
+.table-bill tr td:nth-child(2) ~ td{
+	text-align: right;
+}

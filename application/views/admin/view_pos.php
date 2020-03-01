@@ -50,7 +50,7 @@
                                     }
                                 }
                                 ?>
-                                    <input type="checkbox" name="menu[]" value="<?php echo $value["id"] ?>" <?php echo ($boo==true)?"checked":"" ?> />
+                                    <input icheck type="checkbox" name="menu[]" value="<?php echo $value["id"] ?>" <?php echo ($boo==true)?"checked":"" ?> />
                                 </td>
                             </tr>
                         <?php
@@ -87,7 +87,7 @@
                                     }
                                 }
                                 ?>
-                                    <input type="checkbox" name="method[]" value="<?php echo $value["id"] ?>" <?php echo ($boo==true)?"checked":"" ?> />
+                                    <input icheck type="checkbox" name="method[]" value="<?php echo $value["id"] ?>" <?php echo ($boo==true)?"checked":"" ?> />
                                 </td>
                             </tr>
                         <?php
@@ -124,7 +124,7 @@
                                     }
                                 }
                                 ?>
-                                    <input type="radio" name="promotion[]" value="<?php echo $value["id"] ?>" <?php echo ($bo2==true)?"checked":"" ?> />
+                                    <input icheck type="checkbox" name="promotion[]" value="<?php echo $value["id"] ?>" <?php echo ($bo2==true)?"checked":"" ?> />
                                 </td>
                             </tr>
                         <?php

@@ -62,6 +62,25 @@ if(!function_exists("get_code_promotion")){
 		}
 	}
 }
+if(!function_exists("get_code_bill")){
+	function get_code_bill(){
+		$CI = get_instance();
+		$CI->db->select("code");
+		$CI->db->from("bill");
+		$CI->db->order_by("id","desc");
+		$qr = $CI->db->get();
+		if($qr->num_rows()>0){
+			$value = $qr->row_array();
+			$num = (int) substr($value["code"], 2);
+			$num++;
+			$num = str_pad($num, 5,0,STR_PAD_LEFT);
+			echo "CT".$num;
+		}
+		else{
+			echo "CT00001";
+		}
+	}
+}
 if(!function_exists("pr")){
 	function pr($array){
 		echo "<pre>";

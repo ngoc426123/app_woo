@@ -151,14 +151,25 @@ $(document).ready(function(){
     		total+=tot;
     	});
     	///////////
-    	if($(".check-giamgia input").prop("checked")){
-    		let giamgia = parseInt($(".check-giamgia").attr("data-giamgia"));
-    		total=total-(total*giamgia/100);
-    	}
-    	if($(".check-vanchuyen input").prop("checked")){
-    		let vanchuyen = parseInt($(".check-vanchuyen").attr("data-vanchuyen"));
-    		total=total+vanchuyen;
-    	}
+    	$(".check-giamgia").each(function(){
+    		let __ = $(this);
+    		if(__.find("input").prop("checked")){
+	    		let giamgia = parseInt(__.attr("data-giamgia"));
+	    		if(__.attr("data-type")=="per"){
+	    			total=total-(total*giamgia/100);
+	    		}
+	    		else{
+	    			total=total-giamgia;
+	    		}
+	    	}
+    	});
+    	$(".check-vanchuyen").each(function(){
+    		let __ = $(this);
+	    	if(__.find("input").prop("checked")){
+	    		let vanchuyen = parseInt(__.attr("data-vanchuyen"));
+	    		total=total+vanchuyen;
+	    	}
+    	});
     	///////////
     	$(".printArea .total").text(formatNumber(total));
     }
@@ -179,22 +190,33 @@ $(document).ready(function(){
     	let data = `{"ct":"`+ct+`","date":"`+date+`","content":[`+arr_cont+`],"billtotal":"`+ttotal+`"`;
     	///////////
     	pay=ttotal;
-    	if($(".check-giamgia input").prop("checked")){
-    		let giamgia = parseInt($(".check-giamgia").attr("data-giamgia"));
-    		pay=pay-(pay*giamgia/100);
-    		data += `,"discount":"`+$(".check-giamgia").attr("data-giamgia")+`"`;
+    	if($(".tableMenu").find(".check-giamgia").find("input:checked").size()>0){
+    		let ele = $(".tableMenu").find(".check-giamgia").find("input:checked");
+    		let giamgia = parseInt(ele.parents(".check-giamgia").attr("data-giamgia"));
+    		if(ele.parents(".check-giamgia").attr("data-type")=="per"){
+    			pay=pay-(pay*giamgia/100);
+    			data_giamgia = `,"discount":"-`+ele.parents(".check-giamgia").attr("data-giamgia")+`%"`;
+    		}
+    		else{
+    			pay=pay-giamgia;
+    			data_giamgia = `,"discount":"-`+ele.parents(".check-giamgia").attr("data-giamgia")+`"`;
+    		}
     	}
     	else{
-    		data += `,"discount":"0"`;
+    		data_giamgia = `,"discount":"0"`;
     	}
-    	if($(".check-vanchuyen input").prop("checked")){
-    		let vanchuyen = parseInt($(".check-vanchuyen").attr("data-vanchuyen"));
+    	data+=data_giamgia;
+
+    	if($(".tableMenu").find(".check-vanchuyen").find("input:checked").size()>0){
+    		let ele = $(".tableMenu").find(".check-vanchuyen").find("input:checked");
+    		let vanchuyen = parseInt(ele.parents(".check-vanchuyen").attr("data-vanchuyen"));
     		pay=pay+vanchuyen;
-    		data += `,"method":"`+$(".check-vanchuyen").attr("data-vanchuyen")+`"`;
+    		data_vanchuyen = `,"method":"+`+ele.parents(".check-vanchuyen").attr("data-vanchuyen")+`"`;
     	}
     	else{
-    		data += `,"method":"0"`;
+    		data_vanchuyen = `,"method":"0"`;
     	}
+    	data+=data_vanchuyen;
     	///////////
     	data += `,"pay":"`+pay+`"}`;
     	$(".dataBill").attr("data-bill",data);
@@ -226,17 +248,30 @@ $(document).ready(function(){
     ////////////////////////////////////////////////////////////
     $(".printArea").click(function(){
     	let dataBill = JSON.parse($(".dataBill").attr("data-bill"));
+    	let dataBillText = $(".dataBill").attr("data-bill");
     	if(dataBill.billtotal<=0){
     		alertify.notify('Hóa đơn chưa có giá, hãy thêm món', 'error', 3);
     		return false;
     	}
-    	complate_bill();
-    	newBill=false;
-		let content = getContentPrint(dataBill);
-		$(".areaPrint").html($(content));
-    	setTimeout(function(){
-			window.print();
-		},200);
+    	else{
+    		$.ajax({
+    			url:base_url+'bill/addbill',
+    			type:'POST',
+    			async:true,
+    			data:{content: dataBillText},
+    			beforeSend:function(){
+    				$("body").addClass("loading");
+    			},
+    			success:function(e){
+    				newBill=false;
+    				let content = getContentPrint(dataBill);
+    				$(".areaPrint").html($(content));
+    				$("body").removeClass("loading");
+    				complate_bill();
+    				window.print();
+    			}
+    		});
+    	}
 	});
 	function getContentPrint(dataBill){
 		let content = `<div id="printableArea">
@@ -275,11 +310,11 @@ $(document).ready(function(){
 						</tr>
 						<tr>
 							<th class="">Đã giảm</th>
-							<td class="">-`+dataBill.discount+`%</td>
+							<td class="">`+dataBill.discount+`</td>
 						</tr>
 						<tr>
 							<th class="pb">Vận chuyển</th>
-							<td class="pb">+`+dataBill.method+`</td>
+							<td class="pb">`+dataBill.method+`</td>
 						</tr>
 						<tr>
 							<th class="bb">Thanh toán</th>

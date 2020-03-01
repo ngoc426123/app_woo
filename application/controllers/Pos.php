@@ -10,6 +10,11 @@ class Pos extends CI_Controller{
 			$value["method"] = $_POST["method"];
 			$value["promotion"] = $_POST["promotion"];
 			$this->model_pos->edit($value);
+			$data["alert"]=array(
+				"stt"     => "success",
+				"title"   => "Hiệu chỉnh POS",
+				"content" => "Thành công, vui lòng kiểm tra trong phần POS (phần bán hàng).",	
+			);
 		}
 		$this->load->model(array("model_pos","model_menu","model_promotion","model_method"));
 		$data["pos"]=$this->model_pos->get();

@@ -9,13 +9,16 @@
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/font-awesome/css/font-awesome.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/Ionicons/css/ionicons.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css") ?> ">
+    <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css") ?>">
+    <link rel="stylesheet" href="<?php echo base_url("AdminLTE/plugins/iCheck/all.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/dist/css/AdminLTE.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/dist/css/skins/_all-skins.min.css") ?>">
+    <link rel="stylesheet" href="<?php echo base_url("tmp/css/style_print.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("tmp/css/custom.css") ?>">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
+    <div class="wrapper areaAdmin">
         <header class="main-header">
             <a href="<?php echo base_url("dashbroad"); ?>" class="logo">
                 <span class="logo-mini"><b>A</b></span>
@@ -28,6 +31,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a target="_blank" href="<?php echo base_url("banhang") ?>"><i class="fa fa-sign-in"></i></a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
         </header>
         <aside class="main-sidebar">
@@ -67,7 +77,7 @@
                         </ul>
                     </li>
                     <li><a href="<?php echo base_url("bill") ?>"><i class="fa fa-file-text"></i><span>Quản lý hóa đơn</span></a></li>
-                    <li><a href="<?php echo base_url("reset") ?>"><i class="fa fa-repeat"></i><span>Reset</span></a></li>
+                    <!-- <li><a href="<?php echo base_url("reset") ?>"><i class="fa fa-repeat"></i><span>Reset</span></a></li> -->
                 </ul>
             </section>
         </aside>
@@ -87,14 +97,18 @@
             <strong>Copyright &copy; 2020 <a href="#">La Coffee & Flower</a></strong>.
         </footer>
     </div>
+    <div class="areaPrint"></div>
     <!-- ./wrapper -->
     <script src="<?php echo base_url("AdminLTE/bower_components/jquery/dist/jquery.min.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.j") ?>s"></script>
     <script src="<?php echo base_url("AdminLTE/bower_components/fastclick/lib/fastclick.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js") ?>"></script>
+    <script src="<?php echo base_url("AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js") ?>"></script>
+    <script src="<?php echo base_url("AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js") ?>"></script>
+    <script src="<?php echo base_url("AdminLTE/plugins/iCheck/icheck.min.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/dist/js/adminlte.min.js") ?>"></script>
-    <script src="<?php echo base_url("AdminLTE/plugins/ckfinder/ckfinder.js") ?>"></script>
+    <script src="<?php echo base_url("ckfinder/ckfinder.js") ?>"></script>
     <script src="<?php echo base_url("tmp/js/custom.js") ?>"></script>
     <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";
