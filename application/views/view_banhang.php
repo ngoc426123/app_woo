@@ -84,11 +84,11 @@
 					<div class="icon"><i class="fa fa-cog"></i></div>
 					<div class="popup">
 						<ul>
-							<li><a href=""><span class="fa-dashboard">Tổng quan hôm nay</span></a></li>
-							<li><a href=""><span class="fa-list">Quản lý đơn hàng</span></a></li>
+							<li><a href="<?php echo base_url("dashbroad"); ?>"><span class="fa-dashboard">Tổng quan hôm nay</span></a></li>
+							<li><a href="<?php echo base_url("bill"); ?>"><span class="fa-list">Quản lý đơn hàng</span></a></li>
 							<li><a href=""><span class="fa-eye">Tải Teamviewer</span></a></li>
 							<li><a href=""><span class="fa-eye">Tải Ultraviewer</span></a></li>
-							<li><a href=""><span class="fa-sign-out">Thoát</span></a></li>
+							<!-- <li><a href=""><span class="fa-sign-out">Thoát</span></a></li> -->
 						</ul>
 					</div>
 				</div>

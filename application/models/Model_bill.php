@@ -13,5 +13,8 @@ class Model_bill extends CI_Model{
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+	public function del($id){
+		$this->db->delete("bill",array('id' => $id));
+	}
 }
 ?>

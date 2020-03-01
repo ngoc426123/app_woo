@@ -48,10 +48,13 @@ class Model_menu extends CI_Model{
 		$query = $this->db->get();
 		return $query->row_array();
 	}
-	public function get_list(){
+	public function get_list($limit=0){
 		$this->db->select("*");
 		$this->db->from("menu");
 		$this->db->join("promotion_menu","promotion_menu.id_menu = menu.id");
+		if($limit!=0){
+			$this->db->limit($limit);
+		}
 		$this->db->order_by("menu.id","DESC");
 		$query = $this->db->get();
 		return $query->result_array();

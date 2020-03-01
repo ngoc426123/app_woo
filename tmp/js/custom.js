@@ -25,7 +25,7 @@ $(document).ready(function(){
 		paging   : true,
 		ordering : false,
     });
-    $(".btn-print").click(function(){
+    $(".btn-print-bill").click(function(){
     	let dataBill = JSON.parse($(this).attr("data-bill"));
     	let content = getContentPrint(dataBill);
     	$(".areaPrint").html($(content));
@@ -89,4 +89,28 @@ $(document).ready(function(){
 		</div>`;
 		return content;
 	}
+	$(".btn-del-bill").click(function(){
+		let __ = $(this);
+    	alertify.confirm('Xóa hóa đơn', '<p>Bạn có chắc muốn xóa</p>', 
+    		function(){
+    			$.ajax({
+    				url:base_url+'bill/del',
+    				type:'POST',
+    				data:{
+    					id: __.attr("data-bill-id"),
+    				},
+    				async:true,
+    				beforeSend:function(){
+    					__.parents(".box").find("overlay").removeClass("hidden");
+    				},
+    				success:function(e){
+    					console.log(e);
+    					__.parents("tr").remove();
+    					__.parents(".box").find("overlay").addClass("hidden");
+    					alertify.success('Xóa thành công.');
+    				}
+    			});
+    		},function(){}
+    	);
+    });
 });

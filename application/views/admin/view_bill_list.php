@@ -43,7 +43,8 @@
                         <td class="warning"><?php echo number_format($value["pay"],0,'','.') ?> vnđ</td>
                         <td><?php echo $value["time"]." ".$day."/".$month."/".$value["year"] ?></td>
                         <td>
-                            <button class="btn btn-xs btn-primary btn-print" data-bill='<?php echo $value["content"] ?>'><i class="fa fa-print"></i></button>
+                            <button class="btn btn-xs btn-primary btn-print-bill" data-bill='<?php echo $value["content"] ?>'><i class="fa fa-print"></i></button>
+                            <button class="btn btn-xs btn-danger btn-del-bill" data-bill-id='<?php echo $value["id"] ?>'><i class="fa fa-times"></i></button>
                         </td>
                     </tr>
                 <?php
@@ -53,4 +54,5 @@
             </table>
         </div>
     </div>
+    <div class="overlay hidden"><i class="fa fa-refresh fa-spin"></i></div>
 </div>

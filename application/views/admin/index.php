@@ -7,10 +7,11 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/font-awesome/css/font-awesome.min.css") ?>">
-    <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/Ionicons/css/ionicons.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css") ?> ">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/plugins/iCheck/all.css") ?>">
+    <link rel="stylesheet" href="<?php echo base_url("AdminLTE/plugins/alertifyjs/css/alertify.css"); ?>" >
+    <link rel="stylesheet" href="<?php echo base_url("AdminLTE/plugins/alertifyjs/css/themes/default.css"); ?>" >
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/dist/css/AdminLTE.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/dist/css/skins/_all-skins.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("tmp/css/style_print.css"); ?>">
@@ -105,6 +106,7 @@
     <script src="<?php echo base_url("AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/plugins/iCheck/icheck.min.js") ?>"></script>
+    <script src="<?php echo base_url("AdminLTE/plugins/alertifyjs/alertify.js"); ?>" type="text/javascript"></script>
     <script src="<?php echo base_url("AdminLTE/dist/js/adminlte.min.js") ?>"></script>
     <script src="<?php echo base_url("ckfinder/ckfinder.js") ?>"></script>
     <script src="<?php echo base_url("tmp/js/custom.js") ?>"></script>

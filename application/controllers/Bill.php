@@ -32,4 +32,10 @@ class Bill extends CI_Controller {
 		$this->model_bill->add($value);
 		die();
 	}
+	public function del(){
+		$this->load->model("model_bill");
+		$this->model_bill->del($_POST["id"]);
+		echo "done";
+		die();
+	}
 }
