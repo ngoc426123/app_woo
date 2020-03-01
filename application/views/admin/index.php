@@ -101,8 +101,6 @@
     <!-- ./wrapper -->
     <script src="<?php echo base_url("AdminLTE/bower_components/jquery/dist/jquery.min.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js") ?>"></script>
-    <script src="<?php echo base_url("AdminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.j") ?>s"></script>
-    <script src="<?php echo base_url("AdminLTE/bower_components/fastclick/lib/fastclick.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js") ?>"></script>
