@@ -18,9 +18,9 @@ class Banhang extends CI_Controller {
             	$data_method[] = $this->model_method->get_by_id($ps["id_rel"]);
             }
         }
-		$data["menu"]=$data_menu;
-		$data["promotion"]=$data_promotion;
-		$data["method"]=$data_method;
+		$data["menu"]=isset($data_menu)?$data_menu:array();;
+		$data["promotion"]=isset($data_promotion)?$data_promotion:array();
+		$data["method"]=isset($data_method)?$data_method:array();
 		$this->load->view('view_banhang',$data);
 	}
 	public function getbillct(){

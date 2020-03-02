@@ -148,7 +148,7 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <div class="box box-solid bg-teal-gradient">
+        <div class="box box-success">
             <div class="box-header with-border">
                 <h3 class="box-title">Biểu đồ hôm nay</h3>
             </div>
@@ -167,38 +167,50 @@ $(document).ready(function(){
     ///////////////////////////////////////////////////////////////////
     /////////====================DASHBROAD===================//////////
     ///////////////////////////////////////////////////////////////////
-    var data = {
-        labels  : ['8:40', '9h15', '10:20', '18:45', '20:45', '20:50', '21:05'],
-        datasets: [
-            {
-                label               : 'Electronics',
-                fillColor           : '#FFFFFF',
-                strokeColor         : '#FFFFFF',
-                pointColor          : '#FFFFFF',
-                pointStrokeColor    : '#FFFFFF',
-                pointHighlightFill  : '#ffeb3b',
-                pointHighlightStroke: '#ffeb3b',
-                data                : [135000, 245000, 30000, 48000, 44500, 106400, 30500]
+    var canvas = $('#char-dashbroad').get(0).getContext('2d');
+    var chart = new Chart(canvas,{
+        type: 'line',
+        data : {
+            labels  : [],
+            datasets: [
+                {
+                    label           : 'Khách thanh toán',
+                    data            : [],
+                    borderColor     : 'rgba(60, 141, 188, 0.7)',
+                    backgroundColor : 'rgba(60, 141, 188, 0.3)',
+                    borderWidth     : 2
+                }
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
             }
-        ]
-    }
-    var options = {
-        scaleBeginAtZero: true,
-        scaleShowGridLines: true,
-        scaleGridLineColor: "rgba(255,255,255,0.3)",
-        scaleGridLineWidth: 1,
-        scaleShowHorizontalLines: true,
-        scaleShowVerticalLines: true,
-        barShowStroke: true,
-        barStrokeWidth: 1,
-        barValueSpacing: 5,
-        barDatasetSpacing: 1,
-        responsive: true,
-        maintainAspectRatio: false,
-        datasetFill:false,
-    };
-    var canvas = $('#char-dashbroad').get(0).getContext('2d')
-    var char = new Chart(canvas)
-    char.Line(data, options)
+        }
+    });
+    // ==============================================
+    data_label = new Array();
+    data_pay = new Array();
+    $.ajax({
+        url:base_url+"dashbroad/get_revenue_detail",
+        data:{
+            option:"today",
+        },
+        type:'POST',
+        success:function(e){
+            dat = JSON.parse(e);
+            dat.map((e,i) => {
+                data_label.push(e.time);
+                data_pay.push(e.pay);
+            });
+            chart.data.labels = data_label;
+            chart.data.datasets[0].data = data_pay;
+            chart.update();
+        }
+    });
 });
 </script>

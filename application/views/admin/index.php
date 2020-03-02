@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/font-awesome/css/font-awesome.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css") ?> ">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css") ?>">
+    <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/bootstrap-daterangepicker/daterangepicker.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/plugins/iCheck/all.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/plugins/alertifyjs/css/alertify.css"); ?>" >
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/plugins/alertifyjs/css/themes/default.css"); ?>" >
@@ -77,7 +78,19 @@
                             <li><a href="<?php echo base_url("method/add") ?>"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
                         </ul>
                     </li>
-                    <li><a href="<?php echo base_url("bill") ?>"><i class="fa fa-file-text"></i><span>Quản lý hóa đơn</span></a></li>
+                    <?php 
+                    $count = $this->model_bill->get_count_bill()["count(id)"];
+                    ?>
+                    <li>
+                        <a href="<?php echo base_url("bill") ?>">
+                            <i class="fa fa-file-text"></i><span>Quản lý hóa đơn</span>
+                            <span class="pull-right-container">
+                                <small class="label pull-right bg-blue"><?php echo $count; ?></small>
+                            </span>
+                        </a>
+                    </li>
+                    <li><a href="<?php echo base_url("chart") ?>"><i class="fa fa-area-chart"></i><span>Biểu đồ doanh thu</span></a></li>
+                    <li><a href="<?php echo base_url("backup") ?>"><i class="fa fa-database"></i><span>Sao lưu dữ liệu</span></a></li>
                     <!-- <li><a href="<?php echo base_url("reset") ?>"><i class="fa fa-repeat"></i><span>Reset</span></a></li> -->
                 </ul>
             </section>
@@ -105,6 +118,8 @@
     <script src="<?php echo base_url("AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js") ?>"></script>
+    <script src="<?php echo base_url("AdminLTE/bower_components/moment/min/moment.min.js") ?>"></script>
+    <script src="<?php echo base_url("AdminLTE/bower_components/bootstrap-daterangepicker/daterangepicker.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/plugins/iCheck/icheck.min.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/plugins/alertifyjs/alertify.js"); ?>" type="text/javascript"></script>
     <script src="<?php echo base_url("AdminLTE/dist/js/adminlte.min.js") ?>"></script>

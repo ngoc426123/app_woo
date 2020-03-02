@@ -18,12 +18,13 @@
                 <tbody>
                 <?php
                 foreach ($list_bill as $value) {
-                    $day = (count($value["day"])==1)?("0".$value["day"]):($value["day"]);
-                    $month = (count($value["month"])==1)?("0".$value["month"]):($value["month"]);
+
+                    $day = (strlen($value["day"])<=1)?("0".$value["day"]):($value["day"]);
+                    $month = (strlen($value["month"])<=1)?("0".$value["month"]):($value["month"]);
                     $list_menu = json_decode($value["content"])->content;
                 ?>
                     <tr>
-                        <td><?php echo $value["code"] ?></td>
+                        <td><?php echo $value["code"];?></td>
                         <td class="active">
                         <?php
                         foreach ($list_menu as $menu) {

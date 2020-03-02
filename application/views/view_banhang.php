@@ -97,13 +97,20 @@
 				<div class="grid">
 				<?php 
 				foreach ($menu as $value) {
+					if($value["status"]==1){
+						$cost = ($value["type"]=="per")?($value["cost"] - (($value["cost"]*$value["promotion"])/100)):($value["cost"]-$value["promotion"]);
+					}
+					else{
+						$cost = $value["cost"];
+					}
+					
 				?>
 					<div class="col">
-						<div class="item" id="<?php echo $value["id"] ?>" pos="<?php echo $value["name"] ?>" price="<?php echo $value["cost"] ?>">
+						<div class="item" id="<?php echo $value["id"] ?>" pos="<?php echo $value["name"] ?>" price="<?php echo $cost ?>">
 							<div class="img"><img src="<?php echo base_url($value["image"]); ?>" alt=""></div>
 							<div class="caption">
 								<div class="tend"><?php echo $value["name"] ?></div>
-								<div class="price"><?php echo $value["cost"] ?></div>
+								<div class="price"><?php echo $cost ?></div>
 							</div>
 						</div>
 					</div>

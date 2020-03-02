@@ -50,3 +50,23 @@ img{
 .table-bill tr td:nth-child(2) ~ td{
 	text-align: right;
 }
+.box-df{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+.box-df .form-control{
+	height: 30px;
+	line-height: 30px;
+	padding: 3px 12px;
+}
+.box-df input.form-control{
+	width: 180px;
+}
+.box-df select.form-control{
+	width: 150px;
+}

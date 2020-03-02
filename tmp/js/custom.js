@@ -113,4 +113,7 @@ $(document).ready(function(){
     		},function(){}
     	);
     });
+    $('#datepicker-range').daterangepicker({
+    	
+    })
 });

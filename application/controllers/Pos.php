@@ -6,9 +6,9 @@ class Pos extends CI_Controller{
 	public function index(){
 		$this->load->model("model_pos");
 		if(isset($_POST["ok"])){
-			$value["menu"] = $_POST["menu"];
-			$value["method"] = $_POST["method"];
-			$value["promotion"] = $_POST["promotion"];
+			$value["menu"] = isset($_POST["menu"])?$_POST["menu"]:array();
+			$value["method"] = isset($_POST["method"])?$_POST["method"]:array();
+			$value["promotion"] = isset($_POST["promotion"])?$_POST["promotion"]:array();
 			$this->model_pos->edit($value);
 			$data["alert"]=array(
 				"stt"     => "success",
