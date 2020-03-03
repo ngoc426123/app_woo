@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-date_default_timezone_set('GMT');
+date_default_timezone_set('asia/ho_chi_minh');
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

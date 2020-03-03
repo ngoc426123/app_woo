@@ -92,7 +92,7 @@ class Model_dashbroad extends CI_Model{
 				$this->db->order_by("id","ASC");
 				$query = $this->db->get();
 				return $query->result_array();
-			// TODAY
+			// YESTERDAY
 			case 'yesterday':
 				$yesterday["day"] = (int)date('d', strtotime("yesterday"));
 				$yesterday["month"] = (int)date('m', strtotime("yesterday"));

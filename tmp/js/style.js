@@ -73,12 +73,12 @@ $(document).ready(function(){
     });
     let date_now;
     date_now = new Date();
-	date_now = date_now.getHours()+":"+pad_num(date_now.getMinutes())+":"+pad_num(date_now.getSeconds())+" "+pad_num(date_now.getDate())+"/"+pad_num(date_now.getMonth() + 1)+"/"+pad_num(date_now.getFullYear()); // 07:25, 20/06/2019
+	date_now = pad_num(date_now.getHours())+":"+pad_num(date_now.getMinutes())+":"+pad_num(date_now.getSeconds())+" "+pad_num(date_now.getDate())+"/"+pad_num(date_now.getMonth() + 1)+"/"+pad_num(date_now.getFullYear()); // 07:25, 20/06/2019
 	$(".topbarLive .time").text(date_now);
 	$(".topbarLive .time").attr("data-date",date_now);
 	setInterval(function(){
 		date_now = new Date();
-		date_now = date_now.getHours()+":"+pad_num(date_now.getMinutes())+":"+pad_num(date_now.getSeconds())+" "+pad_num(date_now.getDate())+"/"+pad_num(date_now.getMonth() + 1)+"/"+pad_num(date_now.getFullYear()); // 07:25, 20/06/2019
+		date_now = pad_num(date_now.getHours())+":"+pad_num(date_now.getMinutes())+":"+pad_num(date_now.getSeconds())+" "+pad_num(date_now.getDate())+"/"+pad_num(date_now.getMonth() + 1)+"/"+pad_num(date_now.getFullYear()); // 07:25, 20/06/2019
 		$(".topbarLive .time").text(date_now);
 		$(".topbarLive .time").attr("data-date",date_now);
 	},1000);
@@ -180,12 +180,13 @@ $(document).ready(function(){
     	let ct   = $(".dataBill").attr("data-ct");
     	let arr_cont = [];
     	$(".tableMenu table tbody tr").each(function(){
-    		let pos = $(this).attr("pos");
-    		let price = $(this).attr("price");
-    		let quantity = $(this).attr("quantity");
-    		let total = $(this).attr("total");
+            let id       = $(this).attr("id");
+            let pos      = $(this).attr("pos");
+            let price    = $(this).attr("price");
+            let quantity = $(this).attr("quantity");
+            let total    = $(this).attr("total");
     		ttotal+=parseInt(total);
-    		arr_cont.push(`{"pos":"`+pos+`","price":"`+price+`","quantity":"`+quantity+`","total":"`+total+`"}`);
+    		arr_cont.push(`{"id":"`+id+`","pos":"`+pos+`","price":"`+price+`","quantity":"`+quantity+`","total":"`+total+`"}`);
     	});
     	let data = `{"ct":"`+ct+`","date":"`+date+`","content":[`+arr_cont+`],"billtotal":"`+ttotal+`"`;
     	///////////
@@ -263,6 +264,7 @@ $(document).ready(function(){
     				$("body").addClass("loading");
     			},
     			success:function(e){
+                    console.log(e);
     				newBill=false;
     				let content = getContentPrint(dataBill);
     				$(".areaPrint").html($(content));
