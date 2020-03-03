@@ -17,7 +17,7 @@
                         <th>Giá</th>
                         <th>Giảm giá</th>
                         <th>TT giảm giá</th>
-                        <th>Chức năng</th>
+                        <th class="text-right">Chức năng</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,7 +32,7 @@
                         <td><?php echo number_format($value["cost"],0,'','.') ?> vnđ</td>
                         <td><?php echo ($value["type"] == "per")?"- ".$value["promotion"]."%":"- ".number_format($value["promotion"],0,'','.')." vnđ" ?></td>
                         <td><?php echo ($value["status"]=="1")?"<label class='label label-success'>Đang bật</label>":"<label class='label label-default'>Đang tắt</label>" ?></td>
-                        <td><a href="<?php echo base_url("menu/edit/".$value["id"]) ?>" class="btn btn-xs btn-primary"><i class="fa fa-cog"></i></a></td>
+                        <td class="text-right"><a href="<?php echo base_url("menu/edit/".$value["id"]) ?>" class="btn btn-xs btn-primary"><i class="fa fa-cog"></i></a></td>
                     </tr>
                 <?php
                 }

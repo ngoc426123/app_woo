@@ -9,6 +9,49 @@
  * Core: General Layout Style
  * -------------------------
  */
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../font/SourceSansPro/SourceSansPro-Bold.eot');
+    src: url('../font/SourceSansPro/SourceSansPro-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../font/SourceSansPro/SourceSansPro-Bold.woff2') format('woff2'),
+        url('../font/SourceSansPro/SourceSansPro-Bold.woff') format('woff'),
+        url('../font/SourceSansPro/SourceSansPro-Bold.svg#SourceSansPro-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../font/SourceSansPro/SourceSansPro-Light.eot');
+    src: url('../font/SourceSansPro/SourceSansPro-Light.eot?#iefix') format('embedded-opentype'),
+        url('../font/SourceSansPro/SourceSansPro-Light.woff2') format('woff2'),
+        url('../font/SourceSansPro/SourceSansPro-Light.woff') format('woff'),
+        url('../font/SourceSansPro/SourceSansPro-Light.svg#SourceSansPro-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../font/SourceSansPro/SourceSansPro-Regular.eot');
+    src: url('../font/SourceSansPro/SourceSansPro-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../font/SourceSansPro/SourceSansPro-Regular.woff2') format('woff2'),
+        url('../font/SourceSansPro/SourceSansPro-Regular.woff') format('woff'),
+        url('../font/SourceSansPro/SourceSansPro-Regular.svg#SourceSansPro-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('../font/SourceSansPro/SourceSansPro-SemiBold.eot');
+    src: url('../font/SourceSansPro/SourceSansPro-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('../font/SourceSansPro/SourceSansPro-SemiBold.woff2') format('woff2'),
+        url('../font/SourceSansPro/SourceSansPro-SemiBold.woff') format('woff'),
+        url('../font/SourceSansPro/SourceSansPro-SemiBold.svg#SourceSansPro-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+}
 html,
 body {
   height: 100%;
@@ -18,7 +61,7 @@ body {
   height: 100%;
 }
 body {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
   overflow-x: hidden;
   overflow-y: auto;

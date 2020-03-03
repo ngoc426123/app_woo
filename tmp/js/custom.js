@@ -28,6 +28,7 @@ $(document).ready(function(){
     $(".btn-print-bill").click(function(){
     	let dataBill = JSON.parse($(this).attr("data-bill"));
     	let content = getContentPrint(dataBill);
+    	console.log(content);
     	$(".areaPrint").html($(content));
 		window.print();
     });

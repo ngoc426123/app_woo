@@ -15,7 +15,7 @@
                         <th>Nội dung</th>
                         <th>Ngày tạo</th>
                         <th>Giảm giá</th>
-                        <th>Công cụ</th>
+                        <th class="text-right">Công cụ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,7 +28,7 @@
                         <td><?php echo $value["content"] ?></td>
                         <td><?php echo $value["date"] ?></td>
                         <td><?php echo ($value["type"] == "per")?"- ".$value["promotion"]."%":"- ".number_format($value["promotion"],0,'','.')." vnđ" ?></td>
-                        <td><a href="<?php echo base_url("promotion/edit/".$value["id"]) ?>" class="btn btn-xs btn-primary"><i class="fa fa-cog"></i></a></td>
+                        <td class="text-right"><a href="<?php echo base_url("promotion/edit/".$value["id"]) ?>" class="btn btn-xs btn-primary"><i class="fa fa-cog"></i></a></td>
                     </tr>
                 <?php
                 }

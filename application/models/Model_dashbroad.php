@@ -75,6 +75,38 @@ class Model_dashbroad extends CI_Model{
 		$year_now = (int)date('yy');
 		$week_now = (int)date('W');
 		switch ($option) {
+			// WEEK
+			case 'last-week':
+				$arr_n_day = array("last sunday","last monday","last tuesday","last wednesday","last thursday","last friday","last saturday");
+				foreach ($arr_n_day as $value) {
+					$day_on_week[] = (int)date('d', strtotime($value));
+				}
+				$query=array(
+					"month" => $month_now,
+					"year" => $year_now,
+				);
+				$this->db->select("day,month,SUM(pay) as sum");
+				$this->db->from("bill");
+				$this->db->where_in("day",$day_on_week);
+				$this->db->group_by("day");
+				$this->db->order_by("id","ASC");
+				$query = $this->db->get();
+				return $query->result_array();
+			// TODAY
+			case 'yesterday':
+				$yesterday["day"] = (int)date('d', strtotime("yesterday"));
+				$yesterday["month"] = (int)date('m', strtotime("yesterday"));
+				$yesterday["year"] = (int)date('yy', strtotime("yesterday"));
+				$this->db->select("time,day,month,pay");
+				$this->db->from("bill");
+				$this->db->where(array(
+					"day" => $yesterday["day"],
+					"month" => $yesterday["month"],
+					"year" => $yesterday["year"],
+				));
+				$this->db->order_by("id","ASC");
+				$query = $this->db->get();
+				return $query->result_array();
 			// TODAY
 			case 'today':
 				$this->db->select("time,day,month,pay");

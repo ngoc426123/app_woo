@@ -6,7 +6,7 @@
         <div class=" box-df">
             <input type="text" class="form-control" id="datepicker-range">
             <select name="" id="change-select" class="form-control">
-                <option value="last-month">Tháng trước</option>
+                <option value="month">Tháng trước</option>
                 <option value="last-week">Tuần trước</option>
                 <option value="yesterday">Hôm qua</option>
                 <option value="today" selected>Hôm nay</option>
@@ -36,8 +36,8 @@ $(document).ready(function(){
                 {
                     label           : 'Khách thanh toán',
                     data            : [],
-                    borderColor     : 'rgba(60, 141, 188, 0.7)',
-                    backgroundColor : 'rgba(60, 141, 188, 0.3)',
+                    borderColor     : 'rgba(0, 166, 90, 0.7)',
+                    backgroundColor : 'rgba(0, 166, 90, 0.3)',
                     borderWidth     : 2
                 }
             ]
@@ -74,7 +74,6 @@ $(document).ready(function(){
     });
     $("#change-select").on("change",function(){
         let option = $(this).val()
-        console.log(chart);
         $.ajax({
             url:base_url+"dashbroad/get_revenue_detail",
             data:{
@@ -90,11 +89,11 @@ $(document).ready(function(){
             success:function(e){
                 dat = JSON.parse(e);
                 dat.map((e,i) => {
-                    if(option=="today"){
+                    if(option=="today" || option=="yesterday"){
                         data_label.push(e.time);
                         data_pay.push(e.pay);
                     }
-                    else if(option=="week" || option == "month"){
+                    else{
                         data_label.push(e.day+"/"+e.month);
                         data_pay.push(e.sum);
                     }

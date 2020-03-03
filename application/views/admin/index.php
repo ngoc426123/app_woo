@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?php echo $title_page; ?></title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- STYLE -->
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/font-awesome/css/font-awesome.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css") ?> ">
@@ -13,13 +14,28 @@
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/plugins/iCheck/all.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/plugins/alertifyjs/css/alertify.css"); ?>" >
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/plugins/alertifyjs/css/themes/default.css"); ?>" >
-    <link rel="stylesheet" href="<?php echo base_url("AdminLTE/dist/css/AdminLTE.min.css") ?>">
+    <link rel="stylesheet" href="<?php echo base_url("AdminLTE/dist/css/AdminLTE.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/dist/css/skins/_all-skins.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("tmp/css/style_print.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("tmp/css/custom.css") ?>">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!-- SCRIPT -->
+    <script src="<?php echo base_url("AdminLTE/bower_components/jquery/dist/jquery.min.js") ?>"></script>
+    <script src="<?php echo base_url("AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js") ?>"></script>
+    <script src="<?php echo base_url("AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js") ?>"></script>
+    <script src="<?php echo base_url("AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js") ?>"></script>
+    <script src="<?php echo base_url("AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js") ?>"></script>
+    <script src="<?php echo base_url("AdminLTE/bower_components/moment/min/moment.min.js") ?>"></script>
+    <script src="<?php echo base_url("AdminLTE/bower_components/bootstrap-daterangepicker/daterangepicker.js") ?>"></script>
+    <script src="<?php echo base_url("AdminLTE/plugins/iCheck/icheck.min.js") ?>"></script>
+    <script src="<?php echo base_url("AdminLTE/plugins/alertifyjs/alertify.js"); ?>" type="text/javascript"></script>
+    <script src="<?php echo base_url("AdminLTE/dist/js/adminlte.min.js") ?>"></script>
+    <script src="<?php echo base_url("ckfinder/ckfinder.js") ?>"></script>
+    <script src="<?php echo base_url("tmp/js/custom.js") ?>"></script>
+    <script type="text/javascript">
+    var base_url = "<?php echo base_url(); ?>";
+    </script>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper areaAdmin">
         <header class="main-header">
             <a href="<?php echo base_url("dashbroad"); ?>" class="logo">
@@ -85,12 +101,13 @@
                         <a href="<?php echo base_url("bill") ?>">
                             <i class="fa fa-file-text"></i><span>Quản lý hóa đơn</span>
                             <span class="pull-right-container">
-                                <small class="label pull-right bg-blue"><?php echo $count; ?></small>
+                                <small class="label pull-right bg-green"><?php echo $count; ?></small>
                             </span>
                         </a>
                     </li>
+                    <li><a href="<?php echo base_url("images") ?>"><i class="fa fa-image"></i><span>Quản lý hình ảnh</span></a></li>
                     <li><a href="<?php echo base_url("chart") ?>"><i class="fa fa-area-chart"></i><span>Biểu đồ doanh thu</span></a></li>
-                    <li><a href="<?php echo base_url("backup") ?>"><i class="fa fa-database"></i><span>Sao lưu dữ liệu</span></a></li>
+                    <li><a href="<?php echo base_url("database") ?>" class="text-yellow"><i class="fa fa-database"></i><span>Thiết lập dữ liệu</span></a></li>
                     <!-- <li><a href="<?php echo base_url("reset") ?>"><i class="fa fa-repeat"></i><span>Reset</span></a></li> -->
                 </ul>
             </section>
@@ -113,20 +130,6 @@
     </div>
     <div class="areaPrint"></div>
     <!-- ./wrapper -->
-    <script src="<?php echo base_url("AdminLTE/bower_components/jquery/dist/jquery.min.js") ?>"></script>
-    <script src="<?php echo base_url("AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js") ?>"></script>
-    <script src="<?php echo base_url("AdminLTE/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js") ?>"></script>
-    <script src="<?php echo base_url("AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js") ?>"></script>
-    <script src="<?php echo base_url("AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js") ?>"></script>
-    <script src="<?php echo base_url("AdminLTE/bower_components/moment/min/moment.min.js") ?>"></script>
-    <script src="<?php echo base_url("AdminLTE/bower_components/bootstrap-daterangepicker/daterangepicker.js") ?>"></script>
-    <script src="<?php echo base_url("AdminLTE/plugins/iCheck/icheck.min.js") ?>"></script>
-    <script src="<?php echo base_url("AdminLTE/plugins/alertifyjs/alertify.js"); ?>" type="text/javascript"></script>
-    <script src="<?php echo base_url("AdminLTE/dist/js/adminlte.min.js") ?>"></script>
-    <script src="<?php echo base_url("ckfinder/ckfinder.js") ?>"></script>
-    <script src="<?php echo base_url("tmp/js/custom.js") ?>"></script>
-    <script type="text/javascript">
-    var base_url = "<?php echo base_url(); ?>";
-    </script>
+    
 </body>
 </html>
