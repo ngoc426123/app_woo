@@ -70,3 +70,25 @@ img{
 .box-df select.form-control{
 	width: 150px;
 }
+.box-df>div{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+}
+.box-df>div .form-control{
+	margin-right: 10px;
+}
+
+@media (max-width: 640px){
+.box-df,
+.box-df>div{
+	display: block;
+}
+.box-df input.form-control,
+.box-df select.form-control{
+	width: 100%;
+	margin-bottom: 10px;
+}
+}

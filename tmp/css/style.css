@@ -1,6 +1,7 @@
 body{
 	background: #fafafa;
 	position: relative;
+	overflow: hidden;
 }
 body:before{
 	content: "";
@@ -245,6 +246,11 @@ body.loading:after{
 	transform: translateY(-50%);
 	font-size: 20px;
 	color: #999999;
+}
+.paymenu .dateBill input{
+	background: transparent;
+	border:none;
+	width: 130px;
 }
 .paymenu button.printArea{
 	width:-webkit-calc(100% - 60px);

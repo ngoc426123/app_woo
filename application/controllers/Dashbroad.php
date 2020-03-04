@@ -14,14 +14,14 @@ class Dashbroad extends CI_Controller {
 		$data["view_page"]="view_dashbroad";
 		$this->load->view('admin/index',$data);
 	}
-	public function get_list_bill_today(){
-		$this->load->model("model_dashbroad");
-		echo json_encode($this->model_dashbroad->get_list_bill_today());
-		die();
-	}
 	public function get_revenue_detail(){
 		$this->load->model("model_dashbroad");
 		echo json_encode($this->model_dashbroad->get_revenue_detail($_POST["option"]));
+		die();
+	}
+	public function get_sales_detail(){
+		$this->load->model("model_dashbroad");
+		echo json_encode($this->model_dashbroad->get_sales_detail($_POST["option"]));
 		die();
 	}
 }

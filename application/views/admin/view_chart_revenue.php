@@ -35,8 +35,8 @@ $(document).ready(function(){
                 {
                     label           : 'Khách thanh toán',
                     data            : [],
-                    borderColor     : 'rgba(0, 166, 90, 0.7)',
-                    backgroundColor : 'rgba(0, 166, 90, 0.3)',
+                    borderColor     : 'rgba(221, 75, 57, 0.7)',
+                    backgroundColor : 'rgba(221, 75, 57, 0.3)',
                     borderWidth     : 2
                 }
             ]

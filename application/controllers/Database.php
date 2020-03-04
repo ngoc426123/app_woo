@@ -20,6 +20,7 @@ class Database extends CI_Controller {
 	public function emptytable($table){
 		if(isset($table)){
 			$this->db->empty_table($table);
+			$this->db->query("ALTER TABLE {$table} AUTO_INCREMENT = 1");
 			$data["alert"]=array(
 				"stt"     => "success",
 				"title"   => "Xóa record bảng",

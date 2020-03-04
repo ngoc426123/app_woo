@@ -150,11 +150,25 @@
     <div class="col-lg-12">
         <div class="box box-success">
             <div class="box-header with-border">
-                <h3 class="box-title">Biểu đồ hôm nay</h3>
+                <h3 class="box-title">Doanh thu hôm nay</h3>
             </div>
             <div class="box-body">
                 <div class="chart">
                     <canvas id="char-dashbroad"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Bán hàng hôm nay</h3>
+            </div>
+            <div class="box-body">
+                <div class="chart">
+                    <canvas id="char-dashbroad-2"></canvas>
                 </div>
             </div>
         </div>
@@ -175,8 +189,8 @@ $(document).ready(function(){
                 {
                     label           : 'Khách thanh toán',
                     data            : [],
-                    borderColor     : 'rgba(0, 166, 90, 0.7)',
-                    backgroundColor : 'rgba(0, 166, 90, 0.3)',
+                    borderColor     : 'rgba(221, 75, 57, 0.7)',
+                    backgroundColor : 'rgba(221, 75, 57, 0.3)',
                     borderWidth     : 2
                 }
             ]
@@ -209,6 +223,54 @@ $(document).ready(function(){
             chart.data.labels = data_label;
             chart.data.datasets[0].data = data_pay;
             chart.update();
+        }
+    });
+    ///////////////////////////////////////////////////////////////////
+    /////////====================DASHBROAD===================//////////
+    ///////////////////////////////////////////////////////////////////
+    var canvas2 = $('#char-dashbroad-2').get(0).getContext('2d');
+    var chart2 = new Chart(canvas2,{
+        type: 'bar',
+        data : {
+            labels  : [],
+            datasets: [
+                {
+                    label           : 'Số lượng',
+                    data            : [],
+                    borderColor     : 'rgba(96, 92, 168, 0.7)',
+                    backgroundColor : 'rgba(96, 92, 168, 0.3)',
+                    borderWidth     : 2
+                }
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+        }
+    });
+    // ==============================================
+    data_label2 = new Array();
+    data_pay2 = new Array();
+    $.ajax({
+        url:base_url+"dashbroad/get_sales_detail",
+        data:{
+            option:"today",
+        },
+        type:'POST',
+        success:function(e){
+            dat = JSON.parse(e);
+            dat.map((e,i) => {
+                data_label2.push(e.name);
+                data_pay2.push(e.num);
+            });
+            chart2.data.labels = data_label2;
+            chart2.data.datasets[0].data = data_pay2;
+            chart2.update();
         }
     });
 });

@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?php echo $title_page; ?></title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- STYLE -->
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/font-awesome/css/font-awesome.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css") ?> ">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/bower_components/bootstrap-daterangepicker/daterangepicker.css") ?>">
+    
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/plugins/iCheck/all.css") ?>">
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/plugins/alertifyjs/css/alertify.css"); ?>" >
     <link rel="stylesheet" href="<?php echo base_url("AdminLTE/plugins/alertifyjs/css/themes/default.css"); ?>" >
@@ -106,7 +107,8 @@
                         </a>
                     </li>
                     <li><a href="<?php echo base_url("images") ?>"><i class="fa fa-image"></i><span>Quản lý hình ảnh</span></a></li>
-                    <li><a href="<?php echo base_url("chart") ?>"><i class="fa fa-area-chart"></i><span>Biểu đồ doanh thu</span></a></li>
+                    <li><a href="<?php echo base_url("chart/revenue") ?>"><i class="fa fa-area-chart"></i><span>Biểu đồ doanh thu</span></a></li>
+                    <li><a href="<?php echo base_url("chart/sales") ?>"><i class="fa fa-bar-chart"></i><span>Biểu đồ bán hàng</span></a></li>
                     <li><a href="<?php echo base_url("database") ?>" class="text-yellow"><i class="fa fa-database"></i><span>Thiết lập dữ liệu</span></a></li>
                     <!-- <li><a href="<?php echo base_url("reset") ?>"><i class="fa fa-repeat"></i><span>Reset</span></a></li> -->
                 </ul>

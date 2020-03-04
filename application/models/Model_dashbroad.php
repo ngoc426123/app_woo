@@ -23,9 +23,9 @@ class Model_dashbroad extends CI_Model{
 		}
 		// ON WEEK
 		$week=0;
-		$arr_n_day = array("sunday","monday","tuesday","wednesday","thursday","friday","saturday");
-		foreach ($arr_n_day as $value) {
-			$day_on_week[] = (int)date('d', strtotime($value));
+		$date = "{$year_now}-{$month_now}-{$day_now}";
+		for ($i=(int)date("d", strtotime('monday this week', strtotime($date))); $i <= (int)date("d", strtotime('sunday this week', strtotime($date))); $i++) { 
+			$day_on_week[] = (int)$i;
 		}
 		$query=array(
 			"month" => $month_now,
@@ -121,9 +121,9 @@ class Model_dashbroad extends CI_Model{
 				return $query->result_array();
 			// WEEK
 			case 'week':
-				$arr_n_day = array("sunday","monday","tuesday","wednesday","thursday","friday","saturday");
-				foreach ($arr_n_day as $value) {
-					$day_on_week[] = (int)date('d', strtotime($value));
+				$date = "{$year_now}-{$month_now}-{$day_now}";
+				for ($i=(int)date("d", strtotime('monday this week', strtotime($date))); $i <= (int)date("d", strtotime('sunday this week', strtotime($date))); $i++) { 
+					$day_on_week[] = (int)$i;
 				}
 				$query=array(
 					"month" => $month_now,
@@ -154,19 +154,30 @@ class Model_dashbroad extends CI_Model{
 				break;
 		}
 	}
-	public function get_list_bill_today(){
+	public function get_sales_detail($option){
 		$day_now = (int)date('d');
 		$month_now = (int)date('m');
 		$year_now = (int)date('yy');
-		$this->db->select("*");
-		$this->db->from("bill");
-		$this->db->where(array(
-			"day" => $day_now,
-			"month" => $month_now,
-			"year" => $year_now,
-		));
-		$query = $this->db->get();
-		return $query->result_array();
+		$week_now = (int)date('W');
+		switch ($option) {
+			// TODAY
+			case 'today':
+				$this->db->select("*");
+				$this->db->from("menu");
+				$this->db->join("sales","menu.id = sales.id_menu");
+				$this->db->where(array(
+					"sales.day" => $day_now,
+					"sales.month" => $month_now,
+					"sales.year" => $year_now,
+				));
+				$this->db->order_by("menu.id","ASC");
+				$query = $this->db->get();
+				return $query->result_array();
+			// DEFAULT
+			default:
+				return false;
+				break;
+		}
 	}
 }
 ?>
