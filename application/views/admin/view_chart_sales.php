@@ -7,7 +7,7 @@
             <div>
                 <input type="text" class="form-control" id="datepicker-range">
                 <select name="" id="change-select" class="form-control">
-                    <option value="month">Tháng trước</option>
+                    <option value="last-month">Tháng trước</option>
                     <option value="last-week">Tuần trước</option>
                     <option value="yesterday">Hôm qua</option>
                     <option value="today" selected>Hôm nay</option>
@@ -16,7 +16,6 @@
                 </select>
             </div>
             <select name="" id="change-menu" class="form-control hidden">
-                <option value="0">Chọn món</option>
             <?php
             foreach ($list_menu as $key => $value) {
             ?>
@@ -45,7 +44,7 @@ $(document).ready(function(){
             labels  : [],
             datasets: [
                 {
-                    label           : 'Khách thanh toán',
+                    label           : 'Khách mua hàng',
                     data            : [],
                     borderColor     : 'rgba(96, 92, 168, 0.7)',
                     backgroundColor : 'rgba(96, 92, 168, 0.3)',
@@ -70,6 +69,7 @@ $(document).ready(function(){
         url:base_url+"dashbroad/get_sales_detail",
         data:{
             option:"today",
+            menu : 0,
         },
         type:'POST',
         success:function(e){
@@ -85,16 +85,20 @@ $(document).ready(function(){
     });
     $("#change-select").on("change",function(){
         let option = $(this).val();
-        if(option=="today"){
-            $("#change-menu").addClass("hidden");
+        let menu = 0;
+        if(option!="today" && option!="yesterday"){
+            $("#change-menu").removeClass("hidden");
+            menu = $("#change-menu").val();
         }
         else{
-            $("#change-menu").removeClass("hidden");
+            $("#change-menu").addClass("hidden");
+            menu = 0;
         }
         $.ajax({
             url:base_url+"dashbroad/get_sales_detail",
             data:{
                 option:option,
+                menu:menu,
             },
             type:'POST',
             async:true,
@@ -106,7 +110,42 @@ $(document).ready(function(){
             success:function(e){
                 dat = JSON.parse(e);
                 dat.map((e,i) => {
-                    data_label.push(e.name);
+                    if(option=="today" || option=="yesterday"){
+                        data_label.push(e.name);
+                        data_pay.push(e.num);
+                    }
+                    else{
+                        data_label.push(e.day+"/"+e.month);
+                        data_pay.push(e.num);
+                    }
+                });
+                chart.data.labels = data_label;
+                chart.data.datasets[0].data = data_pay;
+                chart.update();
+                $(".overlay").addClass("hidden");
+            }
+        });
+    });
+    $("#change-menu").on("change",function(){
+        let menu = $(this).val();
+        let option = $("#change-select").val();
+        $.ajax({
+            url:base_url+"dashbroad/get_sales_detail",
+            data:{
+                option:option,
+                menu:menu,
+            },
+            type:'POST',
+            async:true,
+            beforeSend:function(){
+                data_label = [];
+                data_pay = [];
+                $(".overlay").removeClass("hidden");
+            },
+            success:function(e){
+                dat = JSON.parse(e);
+                dat.map((e,i) => {
+                    data_label.push(e.day+"/"+e.month);
                     data_pay.push(e.num);
                 });
                 chart.data.labels = data_label;

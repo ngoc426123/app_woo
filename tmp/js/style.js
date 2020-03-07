@@ -279,7 +279,7 @@ $(document).ready(function(){
 		let content = `<div id="printableArea">
 					<div class="billStart">.</div>
 				    <div class="billHead">
-				    	<div class="storeTitle">La Cooffe & Flower</div>
+				    	<div class="storeTitle">La Coffee & Flower</div>
 				    	<div class="storeAddress">483 Kênh Tân Hoá , Phường Hoà Thạnh, Quận Tân Phú, TP. Hồ Chí Minh, Việt Nam</div>
 				    </div>
 					<div class="billShoulder">

@@ -21,7 +21,7 @@ class Dashbroad extends CI_Controller {
 	}
 	public function get_sales_detail(){
 		$this->load->model("model_dashbroad");
-		echo json_encode($this->model_dashbroad->get_sales_detail($_POST["option"]));
+		echo json_encode($this->model_dashbroad->get_sales_detail($_POST["option"],$_POST["menu"]));
 		die();
 	}
 }

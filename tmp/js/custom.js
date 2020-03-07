@@ -28,7 +28,6 @@ $(document).ready(function(){
     $(".btn-print-bill").click(function(){
     	let dataBill = JSON.parse($(this).attr("data-bill"));
     	let content = getContentPrint(dataBill);
-    	console.log(content);
     	$(".areaPrint").html($(content));
 		window.print();
     });
@@ -36,7 +35,7 @@ $(document).ready(function(){
 		let content = `<div id="printableArea">
 					<div class="billStart">.</div>
 				    <div class="billHead">
-				    	<div class="storeTitle">La Cooffe & Flower</div>
+				    	<div class="storeTitle">La Coffee & Flower</div>
 				    	<div class="storeAddress">483 Kênh Tân Hoá , Phường Hoà Thạnh, Quận Tân Phú, TP. Hồ Chí Minh, Việt Nam</div>
 				    </div>
 					<div class="billShoulder">
@@ -105,7 +104,6 @@ $(document).ready(function(){
     					__.parents(".box").find("overlay").removeClass("hidden");
     				},
     				success:function(e){
-    					console.log(e);
     					__.parents("tr").remove();
     					__.parents(".box").find("overlay").addClass("hidden");
     					alertify.success('Xóa thành công.');

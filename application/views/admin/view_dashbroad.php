@@ -260,6 +260,7 @@ $(document).ready(function(){
         url:base_url+"dashbroad/get_sales_detail",
         data:{
             option:"today",
+            menu:0,
         },
         type:'POST',
         success:function(e){

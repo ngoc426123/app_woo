@@ -73,111 +73,49 @@ class Model_dashbroad extends CI_Model{
 		$day_now = (int)date('d');
 		$month_now = (int)date('m');
 		$year_now = (int)date('yy');
-		$week_now = (int)date('W');
-		switch ($option) {
-			// WEEK
-			case 'last-week':
-				$arr_n_day = array("last sunday","last monday","last tuesday","last wednesday","last thursday","last friday","last saturday");
-				foreach ($arr_n_day as $value) {
-					$day_on_week[] = (int)date('d', strtotime($value));
-				}
-				$query=array(
-					"month" => $month_now,
-					"year" => $year_now,
-				);
-				$this->db->select("day,month,SUM(pay) as sum");
-				$this->db->from("bill");
-				$this->db->where_in("day",$day_on_week);
-				$this->db->group_by("day");
-				$this->db->order_by("id","ASC");
-				$query = $this->db->get();
-				return $query->result_array();
-			// YESTERDAY
-			case 'yesterday':
-				$yesterday["day"] = (int)date('d', strtotime("yesterday"));
-				$yesterday["month"] = (int)date('m', strtotime("yesterday"));
-				$yesterday["year"] = (int)date('yy', strtotime("yesterday"));
-				$this->db->select("time,day,month,pay");
-				$this->db->from("bill");
-				$this->db->where(array(
-					"day" => $yesterday["day"],
-					"month" => $yesterday["month"],
-					"year" => $yesterday["year"],
-				));
-				$this->db->order_by("id","ASC");
-				$query = $this->db->get();
-				return $query->result_array();
-			// TODAY
-			case 'today':
-				$this->db->select("time,day,month,pay");
-				$this->db->from("bill");
-				$this->db->where(array(
-					"day" => $day_now,
-					"month" => $month_now,
-					"year" => $year_now,
-				));
-				$this->db->order_by("id","ASC");
-				$query = $this->db->get();
-				return $query->result_array();
-			// WEEK
-			case 'week':
-				$date = "{$year_now}-{$month_now}-{$day_now}";
-				for ($i=(int)date("d", strtotime('monday this week', strtotime($date))); $i <= (int)date("d", strtotime('sunday this week', strtotime($date))); $i++) { 
-					$day_on_week[] = (int)$i;
-				}
-				$query=array(
-					"month" => $month_now,
-					"year" => $year_now,
-				);
-				$this->db->select("day,month,SUM(pay) as sum");
-				$this->db->from("bill");
-				$this->db->where_in("day",$day_on_week);
-				$this->db->group_by("day");
-				$this->db->order_by("id","ASC");
-				$query = $this->db->get();
-				return $query->result_array();
-			// MONTH
-			case 'month':
-				$this->db->select("day,month,SUM(pay) as sum");
-				$this->db->from("bill");
-				$this->db->where(array(
-					"month" => $month_now,
-					"year" => $year_now,
-				));
-				$this->db->group_by("day");
-				$this->db->order_by("id","ASC");
-				$query = $this->db->get();
-				return $query->result_array();
-			// DEFAULT
-			default:
-				return false;
-				break;
+		$list_day = get_list_date($year_now+"/"+$month_now+"/"+$day_now,$option);
+		if($option != "today" && $option != "yesterday"){
+			$this->db->select("time,day,month,year,SUM(pay) as sum");
 		}
+		else{
+			$this->db->select("*");
+		}
+		$this->db->from("bill");
+		$this->db->where_in("day",$list_day["day"]);
+		$this->db->where_in("month",$list_day["month"]);
+		$this->db->where_in("year",$list_day["year"]);
+		if($option != "today" && $option != "yesterday"){
+			$this->db->group_by("day");
+		}
+		$this->db->order_by("id","ASC");
+		$query = $this->db->get();
+		return $query->result_array();
 	}
-	public function get_sales_detail($option){
+	public function get_sales_detail($option,$menu){
 		$day_now = (int)date('d');
 		$month_now = (int)date('m');
 		$year_now = (int)date('yy');
-		$week_now = (int)date('W');
-		switch ($option) {
-			// TODAY
-			case 'today':
-				$this->db->select("*");
-				$this->db->from("menu");
-				$this->db->join("sales","menu.id = sales.id_menu");
-				$this->db->where(array(
-					"sales.day" => $day_now,
-					"sales.month" => $month_now,
-					"sales.year" => $year_now,
-				));
-				$this->db->order_by("menu.id","ASC");
-				$query = $this->db->get();
-				return $query->result_array();
-			// DEFAULT
-			default:
-				return false;
-				break;
+		$list_day = get_list_date($year_now+"/"+$month_now+"/"+$day_now,$option);
+		if($option != "today" && $option != "yesterday"){
+			$this->db->select("name,day,month,year,SUM(num) as num");
 		}
+		else{
+			$this->db->select("*");
+		}
+		$this->db->from("sales");
+		$this->db->join("menu","menu.id = sales.id_menu");
+		$this->db->where_in("sales.day",$list_day["day"]);
+		$this->db->where_in("sales.month",$list_day["month"]);
+		$this->db->where_in("sales.year",$list_day["year"]);
+		if($menu!=0){
+			$this->db->where("id_menu",$menu);
+		}
+		if($option != "today" && $option != "yesterday"){
+			$this->db->group_by("sales.day");
+		}
+		$this->db->order_by("menu.id","ASC");
+		$query = $this->db->get();
+		return $query->result_array();
 	}
 }
 ?>
