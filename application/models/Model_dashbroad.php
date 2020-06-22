@@ -73,7 +73,7 @@ class Model_dashbroad extends CI_Model{
 		$day_now = (int)date('d');
 		$month_now = (int)date('m');
 		$year_now = (int)date('yy');
-		$list_day = get_list_date($year_now+"/"+$month_now+"/"+$day_now,$option);
+		$list_day = get_list_date($year_now."/".$month_now."/".$day_now,$option);
 		if($option != "today" && $option != "yesterday"){
 			$this->db->select("time,day,month,year,SUM(pay) as sum");
 		}
@@ -95,7 +95,7 @@ class Model_dashbroad extends CI_Model{
 		$day_now = (int)date('d');
 		$month_now = (int)date('m');
 		$year_now = (int)date('yy');
-		$list_day = get_list_date($year_now+"/"+$month_now+"/"+$day_now,$option);
+		$list_day = get_list_date($year_now."/".$month_now."/".$day_now,$option);
 		if($option != "today" && $option != "yesterday"){
 			$this->db->select("name,day,month,year,SUM(num) as num");
 		}

@@ -3,19 +3,31 @@ $(document).ready(function(){
      	autoclose: true,
      	format: 'dd/mm/yyyy',
     })
-	$(".openCkFinder").click(function(){
-		var __= $(this);
-		CKFinder.popup( {
-	        width: 800,
-	        height: 500,
-	        chooseFiles: true,
-	        resourceType: 'Images',
-	        selectActionFunction: function( fileUrl, data ) {
-                var file_url = fileUrl.substr(9);
-                __.parents(".img_menu").find("img").attr("src",base_url+file_url);
-                __.parents(".img_menu").find("input").val(file_url);
-	        }
-	    });
+	$(".openUploadfile").click(function(){
+		const input = document.createElement(`input`);
+		input.type = `file`;
+		input.click();
+		input.onchange = (e) => {
+			const file = e.target.files[0];
+			const fd = new FormData();
+			fd.append('file', file);
+			$.ajax({
+				url: `${base_url}/upload/upload_file`,
+				type: `POST`,
+				data: fd,
+				contentType: false,
+            	processData: false,
+				success: function(e) {
+					console.log(e);
+					if ( e == 0 ) {
+						alertify.error('File bạn chọn không phải hình');
+					} else {
+						$(`.img_menu img`).attr('src', `${base_url}${e}`);
+						$(`.img_menu input`).val(e);
+					}
+				}
+			});
+		}
 	});
 	$("input[type='checkbox'][icheck], input[type='radio'][icheck]").iCheck({
       	checkboxClass: 'icheckbox_flat-blue',

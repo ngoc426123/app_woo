@@ -80,6 +80,9 @@ img{
 .box-df>div .form-control{
 	margin-right: 10px;
 }
+.table-image img{
+	max-width: 150px;
+}
 
 @media (max-width: 640px){
 .box-df,

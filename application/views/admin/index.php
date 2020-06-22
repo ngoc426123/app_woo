@@ -30,7 +30,6 @@
     <script src="<?php echo base_url("AdminLTE/plugins/iCheck/icheck.min.js") ?>"></script>
     <script src="<?php echo base_url("AdminLTE/plugins/alertifyjs/alertify.js"); ?>" type="text/javascript"></script>
     <script src="<?php echo base_url("AdminLTE/dist/js/adminlte.min.js") ?>"></script>
-    <script src="<?php echo base_url("ckfinder/ckfinder.js") ?>"></script>
     <script src="<?php echo base_url("tmp/js/custom.js") ?>"></script>
     <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";

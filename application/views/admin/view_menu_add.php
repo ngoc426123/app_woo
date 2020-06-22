@@ -51,9 +51,8 @@
                     <div class="img_menu">
                         <img src="<?php echo base_url("tmp/images/download.png") ?>" alt="">
                         <input type="hidden" class="form-control" value="" name="image">
-                        <button class="btn btn-block btn-default openCkFinder" type="button">Upload</button>
+                        <button class="btn btn-block btn-default openUploadfile" type="button">Upload</button>
                     </div>
-                    
                 </div>
                 <div class="box-footer">
                     <button class="pull-left btn btn-danger">Xóa</button>
@@ -63,3 +62,6 @@
         </div>
     </div>
 </form>
+<link href="<?php echo base_url("AdminLTE/plugins/alertifyjs/css/alertify.css"); ?>" rel="stylesheet">
+<link href="<?php echo base_url("AdminLTE/plugins/alertifyjs/css/themes/default.css"); ?>" rel="stylesheet">
+<script src="<?php echo base_url("AdminLTE/plugins/alertifyjs/alertify.js"); ?>" type="text/javascript"></script>

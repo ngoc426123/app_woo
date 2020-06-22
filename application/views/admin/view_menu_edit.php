@@ -51,7 +51,7 @@
                     <div class="img_menu">
                         <img src="<?php echo base_url($menu["image"]) ?>" alt="">
                         <input type="hidden" class="form-control" value="<?php echo $menu["image"]; ?>" name="image">
-                        <button class="btn btn-block btn-default openCkFinder" type="button">Upload</button>
+                        <button class="btn btn-block btn-default openUploadfile" type="button">Upload</button>
                     </div>
                     
                 </div>

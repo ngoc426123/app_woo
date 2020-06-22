@@ -94,7 +94,7 @@ if(!function_exists("get_date_now")){
 	}
 }
 if(!function_exists("get_list_date")){
-	function get_list_date($date,$option){
+	function get_list_date($date, $option){
 		$return = array(
 			"day" => [],
 			"month" => [],

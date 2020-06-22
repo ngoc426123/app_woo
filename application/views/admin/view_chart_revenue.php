@@ -6,7 +6,7 @@
         <div class=" box-df">
             <input type="text" class="form-control" id="datepicker-range">
             <select name="" id="change-select" class="form-control">
-                <option value="lat-month">Tháng trước</option>
+                <option value="last-month">Tháng trước</option>
                 <option value="last-week">Tuần trước</option>
                 <option value="yesterday">Hôm qua</option>
                 <option value="today" selected>Hôm nay</option>
